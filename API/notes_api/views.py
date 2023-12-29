@@ -8,7 +8,7 @@ from .serializers import *
 class NoteList(generics.ListCreateAPIView):
     queryset = Note.objects.all()
     serializer_class = NoteSerializer
-    # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     # Фильтрация и сортировка товаров на странице
     def get_queryset(self):
@@ -28,8 +28,8 @@ class NoteList(generics.ListCreateAPIView):
 class NoteDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Note.objects.all()
     serializer_class = NoteSerializer
-    # permission_classes = [permissions.IsAuthenticatedOrReadOnly,
-    #                       IsOwnerOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly,
+                          IsOwnerOrReadOnly]
 
 
 class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
