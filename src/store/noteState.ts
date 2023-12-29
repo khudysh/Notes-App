@@ -49,7 +49,10 @@ const noteState = {
         },
         async updateNote({ commit } : any, noteData : any) {
             try {
-                await api.put(`/notes/${noteData.id}/`, noteData)
+                await api.put(`/notes/${noteData.id}/`, noteData, 
+                { headers: {
+                    Authorization: "Token 1cd322054189fd609dd86ebaa785db3906a74d3e" 
+                } })
                 commit('CHANGE_NOTE', noteData)
             } catch (error) {
                 console.log(error)
